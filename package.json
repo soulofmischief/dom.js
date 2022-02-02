@@ -6,57 +6,19 @@
   "author": "soulofmischief <soulofmischief@protonmail.com>",
   "license": "MIT",
   "main": "index",
+  "type": "module",
   "scripts": {
-    "build": "npm run clean --scripts-prepend-node-path; for script in {flow,lib}; do npm run build:$script --scripts-prepend-node-path; done",
-    "build:dev": "NODE_ENV=development nodemon -w src --exec 'yarn build'",
-    "build:flow": "npx flow-copy-source src lib",
-    "build:lib": "babel src -d lib",
-    "coverage": "nyc --reporter=lcov ospec",
-    "clean": "npx rimraf lib",
-    "lint:flow": "npx flow status",
-    "lint:flow:stop": "npx flow stop",
-    "report-coverage": "yarn coverage && codecov",
-    "publish:patch": "npm run build && npm version patch && cp -f package.json lib && npm publish --access public lib",
-    "publish:minor": "npm run build && npm version minor && cp -f package.json lib && npm publish --access public lib",
-    "publish:major": "npm run build && npm version major && cp -f package.json lib && npm publish --access public lib",
-    "test": "babel-node node_modules/.bin/ospec"
+    "lint": "eslint . --config ./.eslintrc.cjs --fix",
+    "prepublish": "yarn test",
+    "test": "yarn lint && ospec"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/node": "^7.8.7",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-flow": "^7.9.0",
-    "@babel/register": "^7.9.0",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-lodash": "^3.3.4",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "codecov": "^3.6.5",
-    "common-tags": "^1.8.0",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-flowtype": "^4.7.0",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint": "^8.8.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "flow-bin": "^0.123.0",
-    "flow-copy-source": "^2.0.9",
-    "jsdom": "^16.2.2",
-    "lodash": "^4.17.15",
-    "nyc": "^15.0.1",
-    "ospec": "^4.1.1",
-    "rimraf": "^3.0.2",
-    "yarn": "^1.22.4"
-  },
-  "nyc": {
-    "require": [
-      "@babel/register"
-    ]
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.9.6",
-    "@soulofmischief/js-utils": "^0.11.2"
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "ospec": "^4.1.1"
   }
 }

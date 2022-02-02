@@ -1,6 +1,4 @@
-// @flow strict
 
-
-export function getDocumentFontSize(): string {
+export function getDocumentFontSize() {
   return parseFloat( getComputedStyle( document.documentElement ).fontSize )
 }
