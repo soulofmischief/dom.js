@@ -19,6 +19,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-standard": "^4.1.0",
+    "jsdom": "^20.0.2",
     "ospec": "^4.1.1"
   }
 }
