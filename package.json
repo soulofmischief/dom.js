@@ -5,7 +5,7 @@
   "repository": "https://github.com/soulofmischief/dom.js",
   "author": "soulofmischief <soulofmischief@protonmail.com>",
   "license": "MIT",
-  "main": "index",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "lint": "eslint . --config ./.eslintrc.cjs --fix",
